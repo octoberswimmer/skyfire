@@ -23,19 +23,20 @@ type (
 
 // Expression types
 type (
-	EIdentifier = js_ast.EIdentifier
-	ECall       = js_ast.ECall
-	EString     = js_ast.EString
-	ENumber     = js_ast.ENumber
-	EObject     = js_ast.EObject
-	EArray      = js_ast.EArray
-	EArrow      = js_ast.EArrow
-	EFunction   = js_ast.EFunction
-	EDot        = js_ast.EDot
-	EIndex      = js_ast.EIndex
-	ENew        = js_ast.ENew
-	EBinary     = js_ast.EBinary
-	EUnary      = js_ast.EUnary
+	EIdentifier       = js_ast.EIdentifier
+	EImportIdentifier = js_ast.EImportIdentifier
+	ECall             = js_ast.ECall
+	EString           = js_ast.EString
+	ENumber           = js_ast.ENumber
+	EObject           = js_ast.EObject
+	EArray            = js_ast.EArray
+	EArrow            = js_ast.EArrow
+	EFunction         = js_ast.EFunction
+	EDot              = js_ast.EDot
+	EIndex            = js_ast.EIndex
+	ENew              = js_ast.ENew
+	EBinary           = js_ast.EBinary
+	EUnary            = js_ast.EUnary
 )
 
 // Binding types
