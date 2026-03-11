@@ -62,6 +62,7 @@ func (e *Error) Error() string {
 // ParseResult contains the parsing result.
 type ParseResult struct {
 	AST    AST
+	Source string
 	Errors []Error
 }
 
@@ -81,7 +82,8 @@ func Parse(source string, opts Options) (*ParseResult, error) {
 	ast, ok := js_parser.Parse(log, src, parserOpts)
 
 	result := &ParseResult{
-		AST: ast,
+		AST:    ast,
+		Source: source,
 	}
 
 	// Collect any errors

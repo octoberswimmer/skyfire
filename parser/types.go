@@ -28,6 +28,8 @@ type (
 	ECall             = js_ast.ECall
 	EString           = js_ast.EString
 	ENumber           = js_ast.ENumber
+	EBoolean          = js_ast.EBoolean
+	ENull             = js_ast.ENull
 	EObject           = js_ast.EObject
 	EArray            = js_ast.EArray
 	EArrow            = js_ast.EArrow
@@ -37,6 +39,8 @@ type (
 	ENew              = js_ast.ENew
 	EBinary           = js_ast.EBinary
 	EUnary            = js_ast.EUnary
+	ETemplate         = js_ast.ETemplate
+	EIf               = js_ast.EIf
 )
 
 // Binding types
@@ -57,6 +61,7 @@ type (
 	LocRef       = ast.LocRef
 	ImportRecord = ast.ImportRecord
 	Loc          = logger.Loc
+	Range        = logger.Range
 	Path         = logger.Path
 )
 
@@ -70,4 +75,14 @@ const (
 	PropertySpread            = js_ast.PropertySpread
 	PropertyDeclareOrAbstract = js_ast.PropertyDeclareOrAbstract
 	PropertyClassStaticBlock  = js_ast.PropertyClassStaticBlock
+)
+
+// PropertyFlags constants
+type PropertyFlags = js_ast.PropertyFlags
+
+const (
+	PropertyIsComputed      = js_ast.PropertyIsComputed
+	PropertyIsStatic        = js_ast.PropertyIsStatic
+	PropertyWasShorthand    = js_ast.PropertyWasShorthand
+	PropertyPreferQuotedKey = js_ast.PropertyPreferQuotedKey
 )
