@@ -2496,10 +2496,16 @@ func (p *parser) parseProperty(startLoc logger.Loc, kind js_ast.PropertyKind, op
 			}
 		}
 
-		// Skip over types
+		// Parse TypeScript type annotation
+		var tsTypeAnnotation string
 		if p.options.ts.Parse && p.lexer.Token == js_lexer.TColon {
 			p.lexer.Next()
+			typeStart := int(p.lexer.Loc().Start)
 			p.skipTypeScriptType(js_ast.LLowest)
+			typeEnd := int(p.lexer.Loc().Start)
+			if typeStart < typeEnd && typeEnd <= len(p.source.Contents) {
+				tsTypeAnnotation = strings.TrimSpace(p.source.Contents[typeStart:typeEnd])
+			}
 		}
 
 		if p.lexer.Token == js_lexer.TEquals {
@@ -2554,6 +2560,7 @@ func (p *parser) parseProperty(startLoc logger.Loc, kind js_ast.PropertyKind, op
 			Flags:            flags,
 			Key:              key,
 			InitializerOrNil: initializerOrNil,
+			TSTypeAnnotation: tsTypeAnnotation,
 			CloseBracketLoc:  closeBracketLoc,
 		}, true
 	}

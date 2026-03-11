@@ -82,3 +82,107 @@ func TestParseErrors(t *testing.T) {
 	t.Logf("Got expected error: %s (line %d, col %d)",
 		result.Errors[0].Message, result.Errors[0].Line, result.Errors[0].Column)
 }
+
+func TestParseTypeScriptTypeAnnotations(t *testing.T) {
+	tests := []struct {
+		name     string
+		source   string
+		propName string
+		wantType string
+	}{
+		{
+			name: "simple string type",
+			source: `class Foo {
+				name: string
+			}`,
+			propName: "name",
+			wantType: "string",
+		},
+		{
+			name: "number type",
+			source: `class Foo {
+				count: number
+			}`,
+			propName: "count",
+			wantType: "number",
+		},
+		{
+			name: "array type",
+			source: `class Foo {
+				items: string[]
+			}`,
+			propName: "items",
+			wantType: "string[]",
+		},
+		{
+			name: "generic type",
+			source: `class Foo {
+				data: Map<string, number>
+			}`,
+			propName: "data",
+			wantType: "Map<string, number>",
+		},
+		{
+			name: "union type",
+			source: `class Foo {
+				value: string | number
+			}`,
+			propName: "value",
+			wantType: "string | number",
+		},
+		{
+			name: "type with initializer",
+			source: `class Foo {
+				name: string = 'hello'
+			}`,
+			propName: "name",
+			wantType: "string",
+		},
+		{
+			name: "no type annotation",
+			source: `class Foo {
+				name = 'hello'
+			}`,
+			propName: "name",
+			wantType: "",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := ParseFile(tt.source)
+			if err != nil {
+				t.Fatalf("Parse failed: %v", err)
+			}
+
+			// Find the class and property
+			var gotType string
+			for _, part := range result.AST.Parts {
+				for _, stmt := range part.Stmts {
+					if classStmt, ok := stmt.Data.(*SClass); ok {
+						for _, prop := range classStmt.Class.Properties {
+							if str, ok := prop.Key.Data.(*EString); ok {
+								if stringFromUTF16(str.Value) == tt.propName {
+									gotType = prop.TSTypeAnnotation
+									break
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if gotType != tt.wantType {
+				t.Errorf("got type %q, want %q", gotType, tt.wantType)
+			}
+		})
+	}
+}
+
+func stringFromUTF16(data []uint16) string {
+	runes := make([]rune, len(data))
+	for i, v := range data {
+		runes[i] = rune(v)
+	}
+	return string(runes)
+}

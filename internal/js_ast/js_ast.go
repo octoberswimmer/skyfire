@@ -313,6 +313,10 @@ type Property struct {
 	//
 	InitializerOrNil Expr
 
+	// TypeScript type annotation for class fields (e.g., "string" in "foo: string")
+	// This is preserved for tools that need type information.
+	TSTypeAnnotation string
+
 	Decorators []Decorator
 
 	Loc             logger.Loc
