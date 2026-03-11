@@ -3,10 +3,10 @@ package css_parser
 import (
 	"strings"
 
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/compat"
+	"github.com/octoberswimmer/skyfire/internal/css_ast"
+	"github.com/octoberswimmer/skyfire/internal/css_lexer"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 // Reference: https://drafts.csswg.org/mediaqueries-4/

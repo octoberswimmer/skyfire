@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/test"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/test"
 )
 
 func lexToken(contents string) (T, string) {

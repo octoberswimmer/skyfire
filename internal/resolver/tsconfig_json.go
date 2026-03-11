@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/cache"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/js_parser"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/cache"
+	"github.com/octoberswimmer/skyfire/internal/config"
+	"github.com/octoberswimmer/skyfire/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/js_lexer"
+	"github.com/octoberswimmer/skyfire/internal/js_parser"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 type TSConfigJSON struct {
@@ -358,7 +358,7 @@ func ParseTSConfigJSON(
 	}
 
 	// Warn about compiler options not wrapped in "compilerOptions".
-	// For example: https://github.com/evanw/esbuild/issues/3301
+	// For example: https://github.com/octoberswimmer/skyfire/issues/3301
 	if obj, ok := json.Data.(*js_ast.EObject); ok {
 	loop:
 		for _, prop := range obj.Properties {

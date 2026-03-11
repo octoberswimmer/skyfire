@@ -6,11 +6,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/sourcemap"
+	"github.com/octoberswimmer/skyfire/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/sourcemap"
 )
 
 // New specification: https://tc39.es/ecma426/

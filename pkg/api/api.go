@@ -3,7 +3,7 @@
 //
 // If you are just trying to run esbuild from Go without the overhead of
 // creating a child process, there is also an API for the command-line
-// interface itself: https://pkg.go.dev/github.com/evanw/esbuild/pkg/cli.
+// interface itself: https://pkg.go.dev/github.com/octoberswimmer/skyfire/pkg/cli.
 //
 // # Build API
 //
@@ -19,7 +19,7 @@
 //	import (
 //	    "os"
 //
-//	    "github.com/evanw/esbuild/pkg/api"
+//	    "github.com/octoberswimmer/skyfire/pkg/api"
 //	)
 //
 //	func main() {
@@ -51,7 +51,7 @@
 //	    "fmt"
 //	    "os"
 //
-//	    "github.com/evanw/esbuild/pkg/api"
+//	    "github.com/octoberswimmer/skyfire/pkg/api"
 //	)
 //
 //	func main() {
@@ -79,7 +79,7 @@ package api
 import (
 	"time"
 
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 type SourceMap uint8

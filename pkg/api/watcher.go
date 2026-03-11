@@ -30,9 +30,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/resolver"
+	"github.com/octoberswimmer/skyfire/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/resolver"
 )
 
 // The time to wait between watch intervals

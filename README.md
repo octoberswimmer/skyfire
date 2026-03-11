@@ -1,39 +1,64 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./images/wordmark-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./images/wordmark-light.svg">
-    <img alt="esbuild: An extremely fast JavaScript bundler" src="./images/wordmark-light.svg">
-  </picture>
-  <br>
-  <a href="https://esbuild.github.io/">Website</a> |
-  <a href="https://esbuild.github.io/getting-started/">Getting started</a> |
-  <a href="https://esbuild.github.io/api/">Documentation</a> |
-  <a href="https://esbuild.github.io/plugins/">Plugins</a> |
-  <a href="https://esbuild.github.io/faq/">FAQ</a>
-</p>
+# Skyfire
 
-## Why?
+A fast JavaScript/TypeScript parser library for Go, forked from [esbuild](https://github.com/evanw/esbuild).
 
-Our current build tools for the web are 10-100x slower than they could be:
+## Why Skyfire?
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./images/benchmark-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./images/benchmark-light.svg">
-    <img alt="Bar chart with benchmark results" src="./images/benchmark-light.svg">
-  </picture>
-</p>
+Skyfire exposes esbuild's internal JavaScript parser as a public Go API. This enables:
 
-The main goal of the esbuild bundler project is to bring about a new era of build tool performance, and create an easy-to-use modern bundler along the way.
+- **AST access**: Full access to the parsed JavaScript/TypeScript AST
+- **Speed**: Leverages esbuild's extremely fast parser
+- **ES6+ support**: Handles modern JavaScript including modules, decorators, and class fields
+- **Error reporting**: Detailed parse errors with line and column numbers
 
-Major features:
+## Use Cases
 
-- Extreme speed without needing a cache
-- [JavaScript](https://esbuild.github.io/content-types/#javascript), [CSS](https://esbuild.github.io/content-types/#css), [TypeScript](https://esbuild.github.io/content-types/#typescript), and [JSX](https://esbuild.github.io/content-types/#jsx) built-in
-- A straightforward [API](https://esbuild.github.io/api/) for CLI, JS, and Go
-- Bundles ESM and CommonJS modules
-- Bundles CSS including [CSS modules](https://github.com/css-modules/css-modules)
-- Tree shaking, [minification](https://esbuild.github.io/api/#minify), and [source maps](https://esbuild.github.io/api/#sourcemap)
-- [Local server](https://esbuild.github.io/api/#serve), [watch mode](https://esbuild.github.io/api/#watch), and [plugins](https://esbuild.github.io/plugins/)
+- Static analysis of JavaScript/TypeScript code
+- Extracting metadata from ES6 modules (imports, exports, decorators)
+- Building development tools that need to understand JS/TS structure
 
-Check out the [getting started](https://esbuild.github.io/getting-started/) instructions if you want to give esbuild a try.
+## Installation
+
+```bash
+go get github.com/octoberswimmer/skyfire
+```
+
+## Usage
+
+```go
+package main
+
+import (
+    "fmt"
+    "github.com/octoberswimmer/skyfire/parser"
+)
+
+func main() {
+    source := `
+        import { foo } from 'bar';
+        export default class MyClass {
+            @api myProperty;
+        }
+    `
+
+    ast, err := parser.Parse(source, parser.Options{})
+    if err != nil {
+        fmt.Printf("Parse error: %v\n", err)
+        return
+    }
+
+    // Access imports, exports, classes, decorators, etc.
+    for _, imp := range ast.Imports {
+        fmt.Printf("Import: %s\n", imp.Path)
+    }
+}
+```
+
+## License
+
+MIT License - see [LICENSE.md](LICENSE.md)
+
+## Acknowledgments
+
+This project is a fork of [esbuild](https://github.com/evanw/esbuild) by Evan Wallace.
+The core parser code is from esbuild with modifications to expose it as a public API.

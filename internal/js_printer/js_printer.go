@@ -9,14 +9,14 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/renamer"
-	"github.com/evanw/esbuild/internal/sourcemap"
+	"github.com/octoberswimmer/skyfire/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/compat"
+	"github.com/octoberswimmer/skyfire/internal/config"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/renamer"
+	"github.com/octoberswimmer/skyfire/internal/sourcemap"
 )
 
 var positiveInfinity = math.Inf(1)

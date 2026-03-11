@@ -3,7 +3,7 @@ package bundler_tests
 import (
 	"testing"
 
-	"github.com/evanw/esbuild/internal/config"
+	"github.com/octoberswimmer/skyfire/internal/config"
 )
 
 var glob_suite = suite{

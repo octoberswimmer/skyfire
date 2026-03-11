@@ -6,7 +6,7 @@ package cli_helpers
 import (
 	"fmt"
 
-	"github.com/evanw/esbuild/pkg/api"
+	"github.com/octoberswimmer/skyfire/pkg/api"
 )
 
 type ErrorWithNote struct {

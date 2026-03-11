@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 type Timer struct {

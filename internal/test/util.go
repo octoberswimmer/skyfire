@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 func AssertEqual(t *testing.T, observed interface{}, expected interface{}) {

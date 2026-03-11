@@ -7,11 +7,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/js_parser"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/test"
+	"github.com/octoberswimmer/skyfire/internal/config"
+	"github.com/octoberswimmer/skyfire/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/js_parser"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/test"
 )
 
 type pnpTestExpectation struct {

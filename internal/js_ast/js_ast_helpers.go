@@ -5,10 +5,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/compat"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 type HelperContext struct {

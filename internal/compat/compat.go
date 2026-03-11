@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/ast"
 )
 
 type v struct {

@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/css_ast"
+	"github.com/octoberswimmer/skyfire/internal/css_lexer"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 func (p *parser) tryToReduceCalcExpression(token css_ast.Token) css_ast.Token {

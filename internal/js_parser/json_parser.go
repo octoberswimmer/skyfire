@@ -3,11 +3,11 @@ package js_parser
 import (
 	"fmt"
 
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/compat"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/js_lexer"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 type jsonParser struct {

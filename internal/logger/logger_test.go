@@ -3,8 +3,8 @@ package logger_test
 import (
 	"testing"
 
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/test"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/test"
 )
 
 func TestMsgIDs(t *testing.T) {

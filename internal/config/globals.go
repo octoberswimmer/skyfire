@@ -4,9 +4,9 @@ import (
 	"math"
 	"sync"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
 )
 
 var processedGlobalsMutex sync.Mutex

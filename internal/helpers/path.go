@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/fs"
 )
 
 func IsInsideNodeModules(path string) bool {

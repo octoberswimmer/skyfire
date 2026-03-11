@@ -11,13 +11,13 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/js_parser"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/resolver"
+	"github.com/octoberswimmer/skyfire/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/js_lexer"
+	"github.com/octoberswimmer/skyfire/internal/js_parser"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/resolver"
 )
 
 func parseMangleCache(osArgs []string, fs fs.FS, absPath string) (map[string]interface{}, []string) {

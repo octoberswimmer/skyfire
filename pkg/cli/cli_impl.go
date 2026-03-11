@@ -14,10 +14,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/cli_helpers"
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/pkg/api"
+	"github.com/octoberswimmer/skyfire/internal/cli_helpers"
+	"github.com/octoberswimmer/skyfire/internal/fs"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/pkg/api"
 )
 
 func newBuildOptions() api.BuildOptions {

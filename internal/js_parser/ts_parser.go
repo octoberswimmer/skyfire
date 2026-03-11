@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/compat"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/js_lexer"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 func (p *parser) skipTypeScriptBinding() {
@@ -1768,7 +1768,7 @@ func (p *parser) parseTypeScriptNamespaceStmt(loc logger.Loc, opts parseStmtOpts
 	// TypeScript also strangely counts namespaces containing only
 	// "export declare" statements as non-empty even though "declare"
 	// statements are only type annotations. We cannot omit the namespace
-	// in that case. See https://github.com/evanw/esbuild/issues/1158.
+	// in that case. See https://github.com/octoberswimmer/skyfire/issues/1158.
 	if (len(stmts) == importEqualsCount && !hasNonLocalExportDeclareInsideNamespace) || opts.isTypeScriptDeclare {
 		p.popAndDiscardScope(scopeIndex)
 		if opts.isModuleScope {

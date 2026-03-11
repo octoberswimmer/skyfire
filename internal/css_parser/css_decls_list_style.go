@@ -3,8 +3,8 @@ package css_parser
 import (
 	"strings"
 
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
+	"github.com/octoberswimmer/skyfire/internal/css_ast"
+	"github.com/octoberswimmer/skyfire/internal/css_lexer"
 )
 
 // list-style-image: <image> | none

@@ -3,9 +3,9 @@ package css_parser
 import (
 	"strings"
 
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/css_ast"
+	"github.com/octoberswimmer/skyfire/internal/css_lexer"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 const (

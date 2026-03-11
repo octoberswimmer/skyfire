@@ -8,8 +8,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/logger"
 )
 
 type ImportKind uint8

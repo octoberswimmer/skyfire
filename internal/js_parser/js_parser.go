@@ -9,15 +9,15 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/renamer"
-	"github.com/evanw/esbuild/internal/runtime"
+	"github.com/octoberswimmer/skyfire/internal/ast"
+	"github.com/octoberswimmer/skyfire/internal/compat"
+	"github.com/octoberswimmer/skyfire/internal/config"
+	"github.com/octoberswimmer/skyfire/internal/helpers"
+	"github.com/octoberswimmer/skyfire/internal/js_ast"
+	"github.com/octoberswimmer/skyfire/internal/js_lexer"
+	"github.com/octoberswimmer/skyfire/internal/logger"
+	"github.com/octoberswimmer/skyfire/internal/renamer"
+	"github.com/octoberswimmer/skyfire/internal/runtime"
 )
 
 // This parser does two passes:
@@ -350,7 +350,7 @@ type parser struct {
 	//       console.log(ns.a, ns.b, c, d, e);
 	//   })(ns || (ns = {}));
 	//
-	// Relevant issue: https://github.com/evanw/esbuild/issues/1158
+	// Relevant issue: https://github.com/octoberswimmer/skyfire/issues/1158
 	hasNonLocalExportDeclareInsideNamespace bool
 
 	// When this flag is enabled, we attempt to fold all expressions that
@@ -2335,7 +2335,7 @@ func (p *parser) parseProperty(startLoc logger.Loc, kind js_ast.PropertyKind, op
 							//
 							// References:
 							//
-							//   https://github.com/evanw/esbuild/issues/1675
+							//   https://github.com/octoberswimmer/skyfire/issues/1675
 							//   https://github.com/microsoft/TypeScript/issues/46345
 							//
 							prop.Kind = js_ast.PropertyDeclareOrAbstract
@@ -2371,7 +2371,7 @@ func (p *parser) parseProperty(startLoc logger.Loc, kind js_ast.PropertyKind, op
 							//
 							// References:
 							//
-							//   https://github.com/evanw/esbuild/issues/3684
+							//   https://github.com/octoberswimmer/skyfire/issues/3684
 							//
 							prop.Kind = js_ast.PropertyDeclareOrAbstract
 							return prop, true
@@ -14632,7 +14632,7 @@ func (p *parser) visitExprInOut(expr js_ast.Expr, in exprIn) (js_ast.Expr, exprO
 					// expecting it to work correctly. But this one special case seems
 					// harmless enough. This is definitely not fully supported though.
 					//
-					// More info: https://github.com/evanw/esbuild/issues/4041
+					// More info: https://github.com/octoberswimmer/skyfire/issues/4041
 					shouldRemove = isUnsightlyPrimitive(e.Value.Data)
 				}
 				if shouldRemove {
