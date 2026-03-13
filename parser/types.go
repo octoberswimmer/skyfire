@@ -60,6 +60,7 @@ type (
 	Ref          = ast.Ref
 	LocRef       = ast.LocRef
 	ImportRecord = ast.ImportRecord
+	Symbol       = ast.Symbol
 	Loc          = logger.Loc
 	Range        = logger.Range
 	Path         = logger.Path
