@@ -46,6 +46,11 @@ type Options struct {
 
 	// JSX enables JSX parsing.
 	JSX bool
+
+	// PreserveUnusedImports prevents unused imports from being removed.
+	// When parsing TypeScript, unused imports are normally removed.
+	// Set this to true to keep all imports in the AST.
+	PreserveUnusedImports bool
 }
 
 // Error represents a parse error with location information.
@@ -76,6 +81,9 @@ func Parse(source string, opts Options) (*ParseResult, error) {
 	configOpts := &config.Options{}
 	if opts.TypeScript {
 		configOpts.TS.Parse = true
+		if opts.PreserveUnusedImports {
+			configOpts.TS.Config.PreserveValueImports = config.True
+		}
 	}
 	parserOpts := js_parser.OptionsFromConfig(configOpts)
 
@@ -115,7 +123,7 @@ func Parse(source string, opts Options) (*ParseResult, error) {
 }
 
 // ParseFile is a convenience function that parses source code with sensible defaults.
-// It enables TypeScript support by default.
+// It enables TypeScript support and preserves unused imports by default.
 func ParseFile(source string) (*ParseResult, error) {
-	return Parse(source, Options{TypeScript: true})
+	return Parse(source, Options{TypeScript: true, PreserveUnusedImports: true})
 }

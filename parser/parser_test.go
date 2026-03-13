@@ -186,3 +186,89 @@ func stringFromUTF16(data []uint16) string {
 	}
 	return string(runes)
 }
+
+func TestParseFile_PreservesUnusedImports(t *testing.T) {
+	// This import is unused in the code but should be preserved by ParseFile
+	source := `import { unusedFunction } from 'some-module';
+export default class Foo {}`
+
+	result, err := ParseFile(source)
+	if err != nil {
+		t.Fatalf("Parse failed: %v", err)
+	}
+
+	// Find the import statement
+	var foundImport bool
+	var foundBinding string
+	for _, part := range result.AST.Parts {
+		for _, stmt := range part.Stmts {
+			if imp, ok := stmt.Data.(*SImport); ok {
+				if imp.Items != nil {
+					for _, item := range *imp.Items {
+						foundImport = true
+						foundBinding = item.Alias
+					}
+				}
+			}
+		}
+	}
+
+	if !foundImport {
+		t.Fatal("Expected unused import to be preserved in AST")
+	}
+	if foundBinding != "unusedFunction" {
+		t.Errorf("Expected binding 'unusedFunction', got %q", foundBinding)
+	}
+}
+
+func TestParse_WithoutPreserveUnusedImports_RemovesUnused(t *testing.T) {
+	// This import is unused and should be removed when PreserveUnusedImports is false
+	source := `import { unusedFunction } from 'some-module';
+export default class Foo {}`
+
+	result, err := Parse(source, Options{TypeScript: true, PreserveUnusedImports: false})
+	if err != nil {
+		t.Fatalf("Parse failed: %v", err)
+	}
+
+	// The import statement should be removed
+	var foundImport bool
+	for _, part := range result.AST.Parts {
+		for _, stmt := range part.Stmts {
+			if _, ok := stmt.Data.(*SImport); ok {
+				foundImport = true
+			}
+		}
+	}
+
+	if foundImport {
+		t.Fatal("Expected unused import to be removed from AST when PreserveUnusedImports is false")
+	}
+}
+
+func TestParse_WithPreserveUnusedImports_KeepsUnused(t *testing.T) {
+	// This import is unused but should be preserved when PreserveUnusedImports is true
+	source := `import { unusedFunction } from 'some-module';
+export default class Foo {}`
+
+	result, err := Parse(source, Options{TypeScript: true, PreserveUnusedImports: true})
+	if err != nil {
+		t.Fatalf("Parse failed: %v", err)
+	}
+
+	// Find the import statement
+	var foundImport bool
+	for _, part := range result.AST.Parts {
+		for _, stmt := range part.Stmts {
+			if imp, ok := stmt.Data.(*SImport); ok {
+				if imp.Items != nil && len(*imp.Items) > 0 {
+					foundImport = true
+				}
+			}
+		}
+	}
+
+	if !foundImport {
+		t.Fatal("Expected unused import to be preserved in AST when PreserveUnusedImports is true")
+	}
+}
