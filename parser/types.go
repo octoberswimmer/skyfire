@@ -19,6 +19,17 @@ type (
 	SClass         = js_ast.SClass
 	SFunction      = js_ast.SFunction
 	SExpr          = js_ast.SExpr
+	SIf            = js_ast.SIf
+	SBlock         = js_ast.SBlock
+	SFor           = js_ast.SFor
+	SForIn         = js_ast.SForIn
+	SForOf         = js_ast.SForOf
+	SWhile         = js_ast.SWhile
+	SDoWhile       = js_ast.SDoWhile
+	SSwitch        = js_ast.SSwitch
+	STry           = js_ast.STry
+	SReturn        = js_ast.SReturn
+	SThrow         = js_ast.SThrow
 )
 
 // Expression types
@@ -64,6 +75,9 @@ type (
 	Loc          = logger.Loc
 	Range        = logger.Range
 	Path         = logger.Path
+	Case         = js_ast.Case
+	Catch        = js_ast.Catch
+	Finally      = js_ast.Finally
 )
 
 // PropertyKind constants
