@@ -85,6 +85,10 @@ func Parse(source string, opts Options) (*ParseResult, error) {
 			configOpts.TS.Config.PreserveValueImports = config.True
 		}
 	}
+	if opts.JSX {
+		configOpts.JSX.Parse = true
+		configOpts.JSX.Preserve = true
+	}
 	parserOpts := js_parser.OptionsFromConfig(configOpts)
 
 	ast, ok := js_parser.Parse(log, src, parserOpts)

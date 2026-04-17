@@ -15,6 +15,8 @@ type (
 	SExportClause  = js_ast.SExportClause
 	SExportFrom    = js_ast.SExportFrom
 	SExportStar    = js_ast.SExportStar
+	SExportEquals  = js_ast.SExportEquals
+	SLazyExport    = js_ast.SLazyExport
 	SLocal         = js_ast.SLocal
 	SClass         = js_ast.SClass
 	SFunction      = js_ast.SFunction
@@ -30,28 +32,52 @@ type (
 	STry           = js_ast.STry
 	SReturn        = js_ast.SReturn
 	SThrow         = js_ast.SThrow
+	SEmpty         = js_ast.SEmpty
+	SComment       = js_ast.SComment
+	SDebugger      = js_ast.SDebugger
+	SDirective     = js_ast.SDirective
+	STypeScript    = js_ast.STypeScript
+	SEnum          = js_ast.SEnum
+	SNamespace     = js_ast.SNamespace
+	SLabel         = js_ast.SLabel
+	SWith          = js_ast.SWith
+	SBreak         = js_ast.SBreak
+	SContinue      = js_ast.SContinue
 )
 
 // Expression types
 type (
-	EIdentifier       = js_ast.EIdentifier
-	EImportIdentifier = js_ast.EImportIdentifier
-	ECall             = js_ast.ECall
-	EString           = js_ast.EString
-	ENumber           = js_ast.ENumber
-	EBoolean          = js_ast.EBoolean
-	ENull             = js_ast.ENull
-	EObject           = js_ast.EObject
-	EArray            = js_ast.EArray
-	EArrow            = js_ast.EArrow
-	EFunction         = js_ast.EFunction
-	EDot              = js_ast.EDot
-	EIndex            = js_ast.EIndex
-	ENew              = js_ast.ENew
-	EBinary           = js_ast.EBinary
-	EUnary            = js_ast.EUnary
-	ETemplate         = js_ast.ETemplate
-	EIf               = js_ast.EIf
+	EIdentifier           = js_ast.EIdentifier
+	EImportIdentifier     = js_ast.EImportIdentifier
+	EPrivateIdentifier    = js_ast.EPrivateIdentifier
+	ENameOfSymbol         = js_ast.ENameOfSymbol
+	ECall                 = js_ast.ECall
+	EString               = js_ast.EString
+	ENumber               = js_ast.ENumber
+	EBoolean              = js_ast.EBoolean
+	ENull                 = js_ast.ENull
+	EObject               = js_ast.EObject
+	EArray                = js_ast.EArray
+	EArrow                = js_ast.EArrow
+	EFunction             = js_ast.EFunction
+	EClass                = js_ast.EClass
+	EDot                  = js_ast.EDot
+	EIndex                = js_ast.EIndex
+	ENew                  = js_ast.ENew
+	EBinary               = js_ast.EBinary
+	EUnary                = js_ast.EUnary
+	ETemplate             = js_ast.ETemplate
+	EIf                   = js_ast.EIf
+	ESpread               = js_ast.ESpread
+	EJSXElement           = js_ast.EJSXElement
+	EJSXText              = js_ast.EJSXText
+	EAnnotation           = js_ast.EAnnotation
+	EAwait                = js_ast.EAwait
+	EYield                = js_ast.EYield
+	ERequireString        = js_ast.ERequireString
+	ERequireResolveString = js_ast.ERequireResolveString
+	EImportString         = js_ast.EImportString
+	EImportCall           = js_ast.EImportCall
 )
 
 // Binding types
@@ -60,24 +86,33 @@ type (
 	BIdentifier     = js_ast.BIdentifier
 	BArray          = js_ast.BArray
 	BObject         = js_ast.BObject
+	BMissing        = js_ast.BMissing
 	PropertyBinding = js_ast.PropertyBinding
 	ArrayBinding    = js_ast.ArrayBinding
 )
 
 // Other types
 type (
-	ClauseItem   = js_ast.ClauseItem
-	PropertyKind = js_ast.PropertyKind
-	Ref          = ast.Ref
-	LocRef       = ast.LocRef
-	ImportRecord = ast.ImportRecord
-	Symbol       = ast.Symbol
-	Loc          = logger.Loc
-	Range        = logger.Range
-	Path         = logger.Path
-	Case         = js_ast.Case
-	Catch        = js_ast.Catch
-	Finally      = js_ast.Finally
+	ClauseItem    = js_ast.ClauseItem
+	Decl          = js_ast.Decl
+	Arg           = js_ast.Arg
+	Fn            = js_ast.Fn
+	FnBody        = js_ast.FnBody
+	TemplatePart  = js_ast.TemplatePart
+	PropertyKind  = js_ast.PropertyKind
+	Ref           = ast.Ref
+	LocRef        = ast.LocRef
+	ImportRecord  = ast.ImportRecord
+	Symbol        = ast.Symbol
+	Loc           = logger.Loc
+	Range         = logger.Range
+	Path          = logger.Path
+	Case          = js_ast.Case
+	Catch         = js_ast.Catch
+	Finally       = js_ast.Finally
+	EnumValue     = js_ast.EnumValue
+	NamedImportEx = js_ast.NamedImport
+	NamedExportEx = js_ast.NamedExport
 )
 
 // PropertyKind constants

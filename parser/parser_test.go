@@ -1022,3 +1022,55 @@ func TestParse_AsyncAwaitWithControlFlow(t *testing.T) {
 		t.Error("expected to find async function")
 	}
 }
+
+func TestParseJSX(t *testing.T) {
+	source := `<div className="min-h-screen">Hello</div>`
+
+	result, err := Parse(source, Options{JSX: true})
+	if err != nil {
+		t.Fatalf("Parse failed: %v", err)
+	}
+
+	var found bool
+	for _, part := range result.AST.Parts {
+		for _, stmt := range part.Stmts {
+			if exprStmt, ok := stmt.Data.(*SExpr); ok {
+				if _, ok := exprStmt.Value.Data.(*EJSXElement); ok {
+					found = true
+				}
+			}
+		}
+	}
+	if !found {
+		t.Fatal("expected JSX AST node")
+	}
+}
+
+func TestParseTSX(t *testing.T) {
+	source := `export function Example() {
+  return <div className="min-h-screen">Hello</div>
+}`
+
+	result, err := Parse(source, Options{TypeScript: true, JSX: true, PreserveUnusedImports: true})
+	if err != nil {
+		t.Fatalf("Parse failed: %v", err)
+	}
+
+	var found bool
+	for _, part := range result.AST.Parts {
+		for _, stmt := range part.Stmts {
+			if fnStmt, ok := stmt.Data.(*SFunction); ok {
+				for _, bodyStmt := range fnStmt.Fn.Body.Block.Stmts {
+					if ret, ok := bodyStmt.Data.(*SReturn); ok {
+						if _, ok := ret.ValueOrNil.Data.(*EJSXElement); ok {
+							found = true
+						}
+					}
+				}
+			}
+		}
+	}
+	if !found {
+		t.Fatal("expected TSX return value to remain as JSX AST")
+	}
+}
